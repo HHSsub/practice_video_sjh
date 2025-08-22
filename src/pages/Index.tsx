@@ -116,6 +116,18 @@ export default function Index() {
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
           <div className="absolute inset-0 bg-black/50"></div>
           
+          {/* Animated grid pattern */}
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute inset-0" style={{
+              backgroundImage: `
+                linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px)
+              `,
+              backgroundSize: '50px 50px',
+              animation: 'grid-move 20s linear infinite'
+            }}></div>
+          </div>
+          
           {/* Floating geometric shapes */}
           <div className="absolute inset-0 overflow-hidden">
             {[...Array(8)].map((_, i) => (
@@ -150,6 +162,28 @@ export default function Index() {
             ))}
           </div>
 
+          {/* Moving light beams */}
+          <div className="absolute inset-0 overflow-hidden">
+            {[...Array(3)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-1 h-full bg-gradient-to-b from-transparent via-blue-400/20 to-transparent animate-light-beam"
+                style={{
+                  left: `${20 + i * 30}%`,
+                  animationDelay: `${i * 2}s`,
+                  animationDuration: '8s'
+                }}
+              ></div>
+            ))}
+          </div>
+
+          {/* Rotating rings */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-96 h-96 border border-blue-500/20 rounded-full animate-spin-slow"></div>
+            <div className="absolute w-80 h-80 border border-purple-500/20 rounded-full animate-spin-slow-reverse"></div>
+            <div className="absolute w-64 h-64 border border-cyan-500/20 rounded-full animate-spin-slow"></div>
+          </div>
+
           {/* Mouse-following gradient */}
           <div 
             className="absolute w-96 h-96 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-3xl pointer-events-none transition-all duration-300 ease-out"
@@ -161,7 +195,7 @@ export default function Index() {
         </div>
 
         <div className={`relative z-10 text-center px-6 max-w-4xl transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <Badge className="mb-6 bg-blue-600/20 text-blue-300 border-blue-500/30 hover:bg-blue-600/30 backdrop-blur-sm">
+          <Badge className="mb-6 bg-blue-600/20 text-blue-300 border-blue-500/30 hover:bg-blue-600/30 backdrop-blur-sm animate-pulse">
             <Sparkles className="w-4 h-4 mr-2" />
             혁신적인 AI 영상 제작 기술
           </Badge>
@@ -169,7 +203,7 @@ export default function Index() {
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
             Reimagine Video Ads
             <br />
-            <span className="text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text">
+            <span className="text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text animate-pulse">
               with AI
             </span>
           </h1>
@@ -182,17 +216,20 @@ export default function Index() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
               size="lg" 
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold shadow-2xl transform hover:scale-105 transition-all duration-300 backdrop-blur-sm"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold shadow-2xl transform hover:scale-105 transition-all duration-300 backdrop-blur-sm relative overflow-hidden group"
               onClick={handleCTAClick}
             >
-              견적 문의하기
-              <ArrowRight className="w-5 h-5 ml-2" />
+              {/* Button background animation */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+              <span className="relative z-10">견적 문의하기</span>
+              <ArrowRight className="w-5 h-5 ml-2 relative z-10" />
             </Button>
             
             <Button 
               variant="outline" 
               size="lg" 
-              className="border-gray-600 text-white hover:bg-gray-800 px-6 py-4 text-lg backdrop-blur-sm"
+              className="border-gray-600 text-white hover:bg-gray-800 px-6 py-4 text-lg backdrop-blur-sm hover:border-blue-500 transition-all duration-300"
             >
               <Play className="w-5 h-5 mr-2" />
               포트폴리오 보기
@@ -216,9 +253,64 @@ export default function Index() {
           <div className="absolute bottom-20 right-10 w-40 h-40 bg-purple-500 rounded-full blur-3xl"></div>
         </div>
 
+        {/* Floating geometric shapes */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(12)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute opacity-30 animate-float"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 4}s`,
+                animationDuration: `${6 + Math.random() * 4}s`
+              }}
+            >
+              <div className={`w-${Math.random() > 0.5 ? '8' : '12'} h-${Math.random() > 0.5 ? '8' : '12'} bg-gradient-to-r from-blue-400/40 to-purple-400/40 rounded-full blur-sm`}></div>
+            </div>
+          ))}
+        </div>
+
+        {/* Animated connection lines */}
+        <div className="absolute inset-0 overflow-hidden">
+          <svg className="w-full h-full absolute inset-0" style={{ zIndex: 1 }}>
+            <defs>
+              <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.3">
+                  <animate attributeName="stop-opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite" />
+                </stop>
+                <stop offset="50%" stopColor="#8b5cf6" stopOpacity="0.6">
+                  <animate attributeName="stop-opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite" />
+                </stop>
+                <stop offset="100%" stopColor="#06b6d4" stopOpacity="0.3">
+                  <animate attributeName="stop-opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite" />
+                </stop>
+              </linearGradient>
+            </defs>
+            <path
+              d="M 20% 50% Q 50% 30% 80% 50%"
+              stroke="url(#lineGradient)"
+              strokeWidth="2"
+              fill="none"
+              opacity="0.6"
+            >
+              <animate attributeName="stroke-dasharray" values="0,1000;1000,0" dur="4s" repeatCount="indefinite" />
+            </path>
+            <path
+              d="M 20% 50% Q 50% 70% 80% 50%"
+              stroke="url(#lineGradient)"
+              strokeWidth="2"
+              fill="none"
+              opacity="0.4"
+            >
+              <animate attributeName="stroke-dasharray" values="1000,0;0,1000" dur="4s" repeatCount="indefinite" />
+            </path>
+          </svg>
+        </div>
+
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-purple-600/20 text-purple-300 border-purple-500/30 backdrop-blur-sm">
+            <Badge className="mb-4 bg-purple-600/20 text-purple-300 border-purple-500/30 backdrop-blur-sm animate-pulse">
               서비스 프로세스
             </Badge>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
@@ -231,18 +323,50 @@ export default function Index() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 relative">
+            {/* Connection lines between cards */}
+            <div className="hidden md:block absolute top-1/2 left-1/3 w-1/3 h-0.5 bg-gradient-to-r from-blue-500/30 to-purple-500/30 transform -translate-y-1/2">
+              <div className="w-full h-full bg-gradient-to-r from-blue-500 to-purple-500 animate-pulse"></div>
+            </div>
+            <div className="hidden md:block absolute top-1/2 left-2/3 w-1/3 h-0.5 bg-gradient-to-r from-purple-500/30 to-orange-500/30 transform -translate-y-1/2">
+              <div className="w-full h-full bg-gradient-to-r from-purple-500 to-orange-500 animate-pulse"></div>
+            </div>
+
             {services.map((service, index) => (
-              <Card key={index} className="bg-gray-900/50 border-gray-700 hover:border-blue-500/50 transition-all duration-500 hover:transform hover:scale-105 group backdrop-blur-sm relative overflow-hidden">
+              <Card key={index} className="bg-gray-900/50 border-gray-700 hover:border-blue-500/50 transition-all duration-700 hover:transform hover:scale-105 group backdrop-blur-sm relative overflow-hidden">
                 {/* Hover effect background */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+                <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-20 transition-opacity duration-700`}></div>
+                
+                {/* Animated border */}
+                <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-500 via-purple-500 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                  <div className="absolute inset-0.5 bg-gray-900 rounded-lg"></div>
+                </div>
+                
+                {/* Floating particles around the card */}
+                <div className="absolute inset-0 overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                  {[...Array(6)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="absolute w-1 h-1 bg-blue-400 rounded-full animate-ping"
+                      style={{
+                        left: `${Math.random() * 100}%`,
+                        top: `${Math.random() * 100}%`,
+                        animationDelay: `${Math.random() * 2}s`,
+                        animationDuration: `${1 + Math.random() * 2}s`
+                      }}
+                    ></div>
+                  ))}
+                </div>
                 
                 <CardContent className="p-8 relative z-10">
                   <div className="flex items-center mb-6">
-                    <div className={`w-12 h-12 bg-gradient-to-r ${service.color} rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                    <div className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg relative overflow-hidden`}>
+                      {/* Icon background animation */}
+                      <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                       {service.icon}
                     </div>
-                    <div className="ml-4 text-2xl font-bold text-gray-200 group-hover:text-white transition-colors duration-300">
+                    <div className="ml-4 text-3xl font-bold text-gray-200 group-hover:text-white transition-colors duration-300">
                       0{index + 1}
                     </div>
                   </div>
@@ -251,21 +375,45 @@ export default function Index() {
                     {service.title}
                   </h3>
                   
-                  <p className="text-gray-400 mb-6 leading-relaxed">
+                  <p className="text-gray-400 mb-6 leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                     {service.description}
                   </p>
                   
-                  <ul className="space-y-2">
+                  <ul className="space-y-3">
                     {service.features.map((feature, fIndex) => (
-                      <li key={fIndex} className="flex items-center text-gray-300 group-hover:text-gray-200 transition-colors duration-300">
-                        <CheckCircle className="w-4 h-4 mr-3 text-green-400" />
+                      <li key={fIndex} className="flex items-center text-gray-300 group-hover:text-gray-200 transition-all duration-300 group-hover:translate-x-2" style={{ transitionDelay: `${fIndex * 100}ms` }}>
+                        <div className="w-5 h-5 bg-green-500/20 rounded-full flex items-center justify-center mr-3 group-hover:bg-green-500/40 transition-colors duration-300">
+                          <CheckCircle className="w-3 h-3 text-green-400" />
+                        </div>
                         {feature}
                       </li>
                     ))}
                   </ul>
+                  
+                  {/* Progress bar animation */}
+                  <div className="mt-6 w-full h-1 bg-gray-700 rounded-full overflow-hidden">
+                    <div className={`h-full bg-gradient-to-r ${service.color} rounded-full transform -translate-x-full group-hover:translate-x-0 transition-transform duration-1000 ease-out`}></div>
+                  </div>
+                  
+                  {/* Floating action indicator */}
+                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
+                    <div className="w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center animate-pulse">
+                      <ArrowRight className="w-4 h-4 text-blue-400" />
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             ))}
+          </div>
+          
+          {/* Bottom decorative element */}
+          <div className="text-center mt-16">
+            <div className="inline-flex items-center space-x-4 bg-gray-800/50 px-8 py-4 rounded-full backdrop-blur-sm border border-gray-700/50">
+              <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
+              <div className="w-3 h-3 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+              <div className="w-3 h-3 bg-orange-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+              <span className="text-gray-400 text-sm ml-2">AI가 실시간으로 프로세스를 최적화합니다</span>
+            </div>
           </div>
         </div>
       </section>

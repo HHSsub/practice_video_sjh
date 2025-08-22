@@ -145,7 +145,7 @@ export default function Index() {
               </div>
             ))}
           </div>
-
+            
           {/* Animated particles */}
           <div className="absolute inset-0 overflow-hidden">
             {[...Array(50)].map((_, i) => (
@@ -414,6 +414,186 @@ export default function Index() {
               <div className="w-3 h-3 bg-orange-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
               <span className="text-gray-400 text-sm ml-2">AI가 실시간으로 프로세스를 최적화합니다</span>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* NEW: Dynamic Video Showcase Section - Higgsfield Style */}
+      <section className="py-20 px-6 bg-gray-900 relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-16">
+            <Badge className="mb-4 bg-green-600/20 text-green-300 border-green-500/30 backdrop-blur-sm">
+              AI 영상 제작 과정
+            </Badge>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              실제 AI 영상 제작 과정을
+              <br />직접 확인해보세요
+            </h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              각 단계별로 실제 AI가 생성하는 영상을 실시간으로 보여드립니다
+            </p>
+          </div>
+
+          {/* Video Process Steps */}
+          <div className="space-y-12">
+            {/* Step 1: Concept Generation */}
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div className="space-y-6">
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-xl flex items-center justify-center text-white font-bold text-xl">
+                    01
+                  </div>
+                  <h3 className="text-2xl font-bold text-white">AI 콘셉트 생성</h3>
+                </div>
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  고급 머신러닝 알고리즘을 통해 브랜드 DNA를 분석하고, 
+                  시장 트렌드와 타겟 오디언스를 고려한 최적의 영상 콘셉트를 생성합니다.
+                </p>
+                <div className="flex space-x-2">
+                  <Badge className="bg-blue-600/20 text-blue-300 border-blue-500/30">브랜드 DNA 분석</Badge>
+                  <Badge className="bg-blue-600/20 text-blue-300 border-blue-500/30">트렌드 인텔리전스</Badge>
+                  <Badge className="bg-blue-600/20 text-blue-300 border-blue-500/30">AI 생성 모델</Badge>
+                </div>
+                <div className="text-sm text-gray-500 font-mono">
+                  <span className="text-blue-400">Algorithm:</span> GPT-4 Vision + Stable Diffusion
+                </div>
+              </div>
+              
+              {/* Video Demo */}
+              <div className="relative group">
+                <div className="relative overflow-hidden rounded-2xl bg-gray-800 border border-gray-700">
+                  <video 
+                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline
+                  >
+                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+                  </video>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                      <span className="text-sm font-mono">AI CONCEPT GENERATION</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 2: Storyboard Creation */}
+            <div className="grid md:grid-cols-2 gap-8 items-center md:flex-row-reverse">
+              <div className="space-y-6 md:order-2">
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl flex items-center justify-center text-white font-bold text-xl">
+                    02
+                  </div>
+                  <h3 className="text-2xl font-bold text-white">AI 스토리보드 생성</h3>
+                </div>
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  컴퓨터 비전 기술과 시퀀스 모델링을 활용하여 
+                  자동화된 시각적 스토리보드를 생성합니다.
+                </p>
+                <div className="flex space-x-2">
+                  <Badge className="bg-purple-600/20 text-purple-300 border-purple-500/30">씬 시퀀스 구성</Badge>
+                  <Badge className="bg-purple-600/20 text-purple-300 border-purple-500/30">비주얼 프리뷰</Badge>
+                  <Badge className="bg-purple-600/20 text-purple-300 border-purple-500/30">자동 편집</Badge>
+                </div>
+                <div className="text-sm text-gray-500 font-mono">
+                  <span className="text-purple-400">Technology:</span> Computer Vision + LSTM Networks
+                </div>
+              </div>
+              
+              {/* Video Demo */}
+              <div className="relative group md:order-1">
+                <div className="relative overflow-hidden rounded-2xl bg-gray-800 border border-gray-700">
+                  <video 
+                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline
+                  >
+                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4" />
+                  </video>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                      <span className="text-sm font-mono">STORYBOARD GENERATION</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 3: Final Video Production */}
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div className="space-y-6">
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-orange-600 to-red-600 rounded-xl flex items-center justify-center text-white font-bold text-xl">
+                    03
+                  </div>
+                  <h3 className="text-2xl font-bold text-white">AI 영상 완성</h3>
+                </div>
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  고성능 GPU 클러스터를 활용한 4K 렌더링과 
+                  다양한 포맷 변환을 통해 최종 영상을 완성합니다.
+                </p>
+                <div className="flex space-x-2">
+                  <Badge className="bg-orange-600/20 text-orange-300 border-orange-500/30">4K 렌더링</Badge>
+                  <Badge className="bg-orange-600/20 text-orange-300 border-orange-500/30">포맷 변환</Badge>
+                  <Badge className="bg-orange-600/20 text-orange-300 border-orange-500/30">완성</Badge>
+                </div>
+                <div className="text-sm text-gray-500 font-mono">
+                  <span className="text-orange-400">Infrastructure:</span> NVIDIA A100 + CUDA 12.0
+                </div>
+              </div>
+              
+              {/* Video Demo */}
+              <div className="relative group">
+                <div className="relative overflow-hidden rounded-2xl bg-gray-800 border border-gray-700">
+                  <video 
+                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline
+                  >
+                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4" />
+                  </video>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                      <span className="text-sm font-mono">VIDEO PRODUCTION COMPLETE</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Interactive Demo CTA */}
+          <div className="text-center mt-16">
+            <Button 
+              size="lg" 
+              className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white px-10 py-6 text-xl font-semibold shadow-2xl transform hover:scale-105 transition-all duration-300 backdrop-blur-sm"
+              onClick={handleCTAClick}
+            >
+              <Play className="w-6 h-6 mr-3" />
+              AI 영상 제작 체험하기
+            </Button>
+            <p className="text-gray-400 mt-4 text-sm">
+              실제 AI 영상 제작 과정을 직접 경험해보세요
+            </p>
           </div>
         </div>
       </section>

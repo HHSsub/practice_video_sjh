@@ -3,22 +3,14 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { ArrowRight, Play, Sparkles, Brain, Zap, Star, CheckCircle, Quote, Video, Camera, Edit3 } from 'lucide-react';
+import { ArrowRight, Play, Sparkles, Brain, Zap, Star, CheckCircle, Quote } from 'lucide-react';
 
 export default function Index() {
   const [isVisible, setIsVisible] = useState(false);
   const [activeVideo, setActiveVideo] = useState(0);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     setIsVisible(true);
-    
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   const services = [
@@ -26,22 +18,19 @@ export default function Index() {
       icon: <Brain className="w-8 h-8" />,
       title: "콘셉트 제안",
       description: "AI가 브랜드 분석을 통해 최적의 영상 콘셉트를 제안합니다",
-      features: ["브랜드 톤앤매너 분석", "트렌드 기반 아이디어", "타겟 맞춤 콘텐츠"],
-      color: "from-blue-600 to-cyan-600"
+      features: ["브랜드 톤앤매너 분석", "트렌드 기반 아이디어", "타겟 맞춤 콘텐츠"]
     },
     {
-      icon: <Edit3 className="w-8 h-8" />,
+      icon: <Sparkles className="w-8 h-8" />,
       title: "스토리보드 생성",
       description: "자동화된 시각적 스토리보드로 영상의 흐름을 미리 확인하세요",
-      features: ["자동 씬 구성", "비주얼 프리뷰", "실시간 수정 가능"],
-      color: "from-purple-600 to-pink-600"
+      features: ["자동 씬 구성", "비주얼 프리뷰", "실시간 수정 가능"]
     },
     {
-      icon: <Video className="w-8 h-8" />,
+      icon: <Zap className="w-8 h-8" />,
       title: "영상 완성",
       description: "최첨단 AI 기술로 고품질 영상을 빠르게 제작합니다",
-      features: ["4K 고화질 렌더링", "다양한 포맷 지원", "빠른 제작 속도"],
-      color: "from-orange-600 to-red-600"
+      features: ["4K 고화질 렌더링", "다양한 포맷 지원", "빠른 제작 속도"]
     }
   ];
 
@@ -50,21 +39,24 @@ export default function Index() {
       title: "패션 브랜드 광고",
       client: "Fashion Co.",
       category: "브랜드 영상",
-      thumbnail: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80",
+      thumbnail: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80"
+    ,
       previewSrc: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
     },
     {
       title: "테크 스타트업 소개",
       client: "TechStart Inc.",
       category: "기업 소개",
-      thumbnail: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80",
+      thumbnail: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80"
+    ,
       previewSrc: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
     },
     {
       title: "제품 런칭 캠페인",
       client: "Product Launch",
       category: "제품 광고",
-      thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+      thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
+    ,
       previewSrc: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
     }
   ];
@@ -115,25 +107,6 @@ export default function Index() {
         {/* Animated Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
           <div className="absolute inset-0 bg-black/50"></div>
-          
-          {/* Floating geometric shapes */}
-          <div className="absolute inset-0 overflow-hidden">
-            {[...Array(8)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute opacity-20 animate-float"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 3}s`,
-                  animationDuration: `${8 + Math.random() * 4}s`
-                }}
-              >
-                <div className={`w-${Math.random() > 0.5 ? '16' : '20'} h-${Math.random() > 0.5 ? '16' : '20'} bg-gradient-to-r from-blue-400/30 to-purple-400/30 rounded-full blur-sm`}></div>
-              </div>
-            ))}
-          </div>
-
           {/* Animated particles */}
           <div className="absolute inset-0 overflow-hidden">
             {[...Array(50)].map((_, i) => (
@@ -149,19 +122,10 @@ export default function Index() {
               ></div>
             ))}
           </div>
-
-          {/* Mouse-following gradient */}
-          <div 
-            className="absolute w-96 h-96 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-3xl pointer-events-none transition-all duration-300 ease-out"
-            style={{
-              left: mousePosition.x - 192,
-              top: mousePosition.y - 192,
-            }}
-          ></div>
         </div>
 
         <div className={`relative z-10 text-center px-6 max-w-4xl transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <Badge className="mb-6 bg-blue-600/20 text-blue-300 border-blue-500/30 hover:bg-blue-600/30 backdrop-blur-sm">
+          <Badge className="mb-6 bg-blue-600/20 text-blue-300 border-blue-500/30 hover:bg-blue-600/30">
             <Sparkles className="w-4 h-4 mr-2" />
             혁신적인 AI 영상 제작 기술
           </Badge>
@@ -182,7 +146,7 @@ export default function Index() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
               size="lg" 
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold shadow-2xl transform hover:scale-105 transition-all duration-300 backdrop-blur-sm"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold shadow-2xl transform hover:scale-105 transition-all duration-300"
               onClick={handleCTAClick}
             >
               견적 문의하기
@@ -192,7 +156,7 @@ export default function Index() {
             <Button 
               variant="outline" 
               size="lg" 
-              className="border-gray-600 text-white hover:bg-gray-800 px-6 py-4 text-lg backdrop-blur-sm"
+              className="border-gray-600 text-white hover:bg-gray-800 px-6 py-4 text-lg"
             >
               <Play className="w-5 h-5 mr-2" />
               포트폴리오 보기
@@ -209,16 +173,10 @@ export default function Index() {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 px-6 bg-gray-800/50 relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-40 h-40 bg-purple-500 rounded-full blur-3xl"></div>
-        </div>
-
-        <div className="max-w-7xl mx-auto relative z-10">
+      <section className="py-20 px-6 bg-gray-800/50">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-purple-600/20 text-purple-300 border-purple-500/30 backdrop-blur-sm">
+            <Badge className="mb-4 bg-purple-600/20 text-purple-300 border-purple-500/30">
               서비스 프로세스
             </Badge>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
@@ -233,13 +191,10 @@ export default function Index() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="bg-gray-900/50 border-gray-700 hover:border-blue-500/50 transition-all duration-500 hover:transform hover:scale-105 group backdrop-blur-sm relative overflow-hidden">
-                {/* Hover effect background */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
-                
-                <CardContent className="p-8 relative z-10">
+              <Card key={index} className="bg-gray-900/50 border-gray-700 hover:border-blue-500/50 transition-all duration-300 hover:transform hover:scale-105 group">
+                <CardContent className="p-8">
                   <div className="flex items-center mb-6">
-                    <div className={`w-12 h-12 bg-gradient-to-r ${service.color} rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                    <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
                       {service.icon}
                     </div>
                     <div className="ml-4 text-2xl font-bold text-gray-200 group-hover:text-white transition-colors duration-300">
@@ -257,7 +212,7 @@ export default function Index() {
                   
                   <ul className="space-y-2">
                     {service.features.map((feature, fIndex) => (
-                      <li key={fIndex} className="flex items-center text-gray-300 group-hover:text-gray-200 transition-colors duration-300">
+                      <li key={fIndex} className="flex items-center text-gray-300">
                         <CheckCircle className="w-4 h-4 mr-3 text-green-400" />
                         {feature}
                       </li>
@@ -271,16 +226,10 @@ export default function Index() {
       </section>
 
       {/* Portfolio Section */}
-      <section className="py-20 px-6 bg-gray-900 relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500 rounded-full blur-3xl"></div>
-        </div>
-
-        <div className="max-w-7xl mx-auto relative z-10">
+      <section className="py-20 px-6 bg-gray-900">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-green-600/20 text-green-300 border-green-500/30 backdrop-blur-sm">
+            <Badge className="mb-4 bg-green-600/20 text-green-300 border-green-500/30">
               포트폴리오
             </Badge>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
@@ -294,19 +243,19 @@ export default function Index() {
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {portfolioVideos.map((video, index) => (
-              <Card key={index} className="bg-gray-800 border-gray-700 overflow-hidden hover:border-blue-500/50 transition-all duration-500 group cursor-pointer backdrop-blur-sm relative">
-                <div className="relative overflow-hidden">
+              <Card key={index} className="bg-gray-800 border-gray-700 overflow-hidden hover:border-blue-500/50 transition-all duration-300 group cursor-pointer">
+                <div className="relative">
                   <img 
                     src={video.thumbnail} 
                     alt={video.title}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 flex items-center justify-center">
-                    <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:bg-white/30 transition-all duration-500 group-hover:scale-110">
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                    <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:bg-white/30 transition-all duration-300">
                       <Play className="w-8 h-8 text-white ml-1" />
                     </div>
                   </div>
-                  <Badge className="absolute top-4 left-4 bg-blue-600/80 text-white backdrop-blur-sm">
+                  <Badge className="absolute top-4 left-4 bg-blue-600/80 text-white">
                     {video.category}
                   </Badge>
                 </div>
@@ -324,7 +273,7 @@ export default function Index() {
             <Button 
               variant="outline" 
               size="lg" 
-              className="border-gray-600 text-white hover:bg-gray-800 hover:border-blue-500 backdrop-blur-sm"
+              className="border-gray-600 text-white hover:bg-gray-800 hover:border-blue-500"
               onClick={handleCTAClick}
             >
               더 많은 포트폴리오 보기
@@ -335,16 +284,10 @@ export default function Index() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 px-6 bg-gray-800/30 relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-1/3 left-20 w-24 h-24 bg-yellow-500 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/3 right-20 w-32 h-32 bg-orange-500 rounded-full blur-3xl"></div>
-        </div>
-
-        <div className="max-w-6xl mx-auto relative z-10">
+      <section className="py-20 px-6 bg-gray-800/30">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-yellow-600/20 text-yellow-300 border-yellow-500/30 backdrop-blur-sm">
+            <Badge className="mb-4 bg-yellow-600/20 text-yellow-300 border-yellow-500/30">
               고객 후기
             </Badge>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
@@ -356,7 +299,7 @@ export default function Index() {
 
           <div className="grid md:grid-cols-2 gap-8">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="bg-gray-900/70 border-gray-700 hover:border-yellow-500/50 transition-all duration-500 backdrop-blur-sm group">
+              <Card key={index} className="bg-gray-900/70 border-gray-700 hover:border-yellow-500/50 transition-all duration-300">
                 <CardContent className="p-8">
                   <div className="flex items-center mb-4">
                     <Quote className="w-8 h-8 text-yellow-400 mr-3" />
@@ -367,12 +310,12 @@ export default function Index() {
                     </div>
                   </div>
                   
-                  <p className="text-gray-300 mb-6 text-lg leading-relaxed italic group-hover:text-gray-200 transition-colors duration-300">
+                  <p className="text-gray-300 mb-6 text-lg leading-relaxed italic">
                     "{testimonial.content}"
                   </p>
                   
                   <div className="flex items-center">
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
                       {testimonial.name[0]}
                     </div>
                     <div className="ml-4">
@@ -388,16 +331,10 @@ export default function Index() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 px-6 bg-gray-900 relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-1/3 right-1/4 w-48 h-48 bg-orange-500 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/3 left-1/4 w-56 h-56 bg-red-500 rounded-full blur-3xl"></div>
-        </div>
-
-        <div className="max-w-4xl mx-auto relative z-10">
+      <section className="py-20 px-6 bg-gray-900">
+        <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-orange-600/20 text-orange-300 border-orange-500/30 backdrop-blur-sm">
+            <Badge className="mb-4 bg-orange-600/20 text-orange-300 border-orange-500/30">
               자주 묻는 질문
             </Badge>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
@@ -412,8 +349,8 @@ export default function Index() {
 
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="bg-gray-800/50 border-gray-700 rounded-lg px-6 backdrop-blur-sm hover:border-orange-500/30 transition-colors duration-300">
-                <AccordionTrigger className="text-white hover:text-orange-300 text-left text-lg font-semibold">
+              <AccordionItem key={index} value={`item-${index}`} className="bg-gray-800/50 border-gray-700 rounded-lg px-6">
+                <AccordionTrigger className="text-white hover:text-blue-300 text-left text-lg font-semibold">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-300 text-base leading-relaxed pt-4">
@@ -426,7 +363,7 @@ export default function Index() {
           <div className="text-center mt-12">
             <Button 
               size="lg" 
-              className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white px-8 py-4 text-lg font-semibold shadow-2xl transform hover:scale-105 transition-all duration-300 backdrop-blur-sm"
+              className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white px-8 py-4 text-lg font-semibold shadow-2xl transform hover:scale-105 transition-all duration-300"
               onClick={handleCTAClick}
             >
               상담 신청하기
@@ -454,24 +391,6 @@ export default function Index() {
           ))}
         </div>
 
-        {/* Floating elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(6)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute opacity-20 animate-float-slow"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 4}s`,
-                animationDuration: `${12 + Math.random() * 6}s`
-              }}
-            >
-              <div className={`w-${Math.random() > 0.5 ? '12' : '16'} h-${Math.random() > 0.5 ? '12' : '16'} bg-white/20 rounded-full blur-sm`}></div>
-            </div>
-          ))}
-        </div>
-
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
             <a id="contact"></a>
@@ -487,7 +406,7 @@ export default function Index() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
               size="lg" 
-              className="bg-white text-gray-900 hover:bg-gray-100 px-10 py-6 text-xl font-bold shadow-2xl transform hover:scale-105 transition-all duration-300 backdrop-blur-sm"
+              className="bg-white text-gray-900 hover:bg-gray-100 px-10 py-6 text-xl font-bold shadow-2xl transform hover:scale-105 transition-all duration-300"
               onClick={handleCTAClick}
             >
               지금 시작하기
@@ -502,14 +421,8 @@ export default function Index() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-6 bg-gray-900 border-t border-gray-800 relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-1/2 left-1/4 w-32 h-32 bg-blue-500 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 right-1/4 w-40 h-40 bg-purple-500 rounded-full blur-3xl"></div>
-        </div>
-
-        <div className="max-w-6xl mx-auto relative z-10">
+      <footer className="py-12 px-6 bg-gray-900 border-t border-gray-800">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center">
             <h3 className="text-2xl font-bold text-white mb-4">
               AI Video Studio
